@@ -91,6 +91,7 @@ module.exports = {
           ["lifecycle/initLifecycle",'初始化阶段(initLifecycle)'],
           ["lifecycle/initEvents",'初始化阶段(initEvents)'],
           ["lifecycle/initInjections",'初始化阶段(initInjections)'],
+          ["lifecycle/initState",'初始化阶段(initState)'],
         ]
       },
     ]
