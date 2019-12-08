@@ -51,7 +51,7 @@ module.exports = {
         ]
       },
       {
-        title: "变化侦测",
+        title: "变化侦测篇",
         collapsable: false,
         children: [
           ["reactive/",'综述'],
@@ -60,7 +60,7 @@ module.exports = {
         ]
       },
       {
-        title: "虚拟DOM",
+        title: "虚拟DOM篇",
         collapsable: false,
         children: [
           ["virtualDOM/",'Vue中的虚拟DOM'],
@@ -70,7 +70,7 @@ module.exports = {
         ]
       },
 	    {
-        title: "模板编译",
+        title: "模板编译篇",
         collapsable: false,
         children: [
           ["complie/",'综述'],
@@ -83,7 +83,7 @@ module.exports = {
         ]
       },
       {
-        title: "生命周期",
+        title: "生命周期篇",
         collapsable: false,
         children: [
           ["lifecycle/",'综述'],
