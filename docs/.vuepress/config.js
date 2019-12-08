@@ -93,6 +93,8 @@ module.exports = {
           ["lifecycle/initInjections",'初始化阶段(initInjections)'],
           ["lifecycle/initState",'初始化阶段(initState)'],
           ["lifecycle/templateComplie",'模板编译阶段'],
+          ["lifecycle/mount",'挂载阶段'],
+          ["lifecycle/destory",'销毁阶段'],
         ]
       },
     ]
