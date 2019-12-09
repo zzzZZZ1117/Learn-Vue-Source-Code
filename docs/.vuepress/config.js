@@ -97,6 +97,13 @@ module.exports = {
           ["lifecycle/destory",'销毁阶段'],
         ]
       },
+      {
+        title: "实例方法篇",
+        collapsable: false,
+        children: [
+          ["instanceMethods/data",'数据相关的方法'],
+        ]
+      },
     ]
   }
 };

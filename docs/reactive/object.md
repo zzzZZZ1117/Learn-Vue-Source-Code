@@ -294,7 +294,7 @@ export function parsePath (path) {
 
 虽然我们通过`Object.defineProperty`方法实现了对`object`数据的可观测，但是这个方法仅仅只能观测到`object`数据的取值及设置值，当我们向`object`数据里添加一对新的`key/value`或删除一对已有的`key/value`时，它是无法观测到的，导致当我们对`object`数据添加或删除值时，无法通知依赖，无法驱动视图进行响应式更新。
 
-当然，`Vue`也注意到了这一点，为了解决这一问题，`Vue`增加了两个全局API:`$set`和`$delete`，这两个API的实现原理将会在后面学习全局API的时候说到。
+当然，`Vue`也注意到了这一点，为了解决这一问题，`Vue`增加了两个全局API:`Vue.set`和`Vue.delete`，这两个API的实现原理将会在后面学习全局API的时候说到。
 
 ## 6. 总结
 
