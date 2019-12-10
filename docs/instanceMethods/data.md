@@ -1,3 +1,21 @@
+## 0. 前言
+
+与数据相关的实例方法有3个，分别是`vm.$set`、`vm.$delete`和`vm.$watch`。它们是在`stateMixin`函数中挂载到`Vue`原型上的，代码如下：
+
+```javascript
+import {set,del} from '../observer/index'
+
+export function stateMixin (Vue) {
+    Vue.prototype.$set = set
+    Vue.prototype.$delete = del
+    Vue.prototype.$watch = function (expOrFn,cb,options) {}
+}
+```
+
+当执行`stateMixin`函数后，会向`Vue`原型上挂载上述3个实例方法。
+
+接下来，我们就来分析这3个与数据相关的实例方法其内部的原理都是怎样的。
+
 ## 1. vm.$watch
 
 ### 1.1 用法回顾

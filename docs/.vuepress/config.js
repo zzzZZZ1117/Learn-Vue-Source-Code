@@ -102,6 +102,7 @@ module.exports = {
         collapsable: false,
         children: [
           ["instanceMethods/data",'数据相关的方法'],
+          ["instanceMethods/event",'事件相关的方法'],
         ]
       },
     ]
