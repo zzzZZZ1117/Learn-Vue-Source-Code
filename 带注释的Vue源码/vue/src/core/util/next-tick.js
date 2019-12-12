@@ -34,11 +34,15 @@ let useMacroTask = false
 // in IE. The only polyfill that consistently queues the callback after all DOM
 // events triggered in the same loop is by using MessageChannel.
 /* istanbul ignore if */
+/* 对于宏任务(macro task) */
+// 检测是否支持原生 setImmediate(高版本 IE 和 Edge 支持)
 if (typeof setImmediate !== 'undefined' && isNative(setImmediate)) {
   macroTimerFunc = () => {
     setImmediate(flushCallbacks)
   }
-} else if (typeof MessageChannel !== 'undefined' && (
+}
+// 检测是否支持原生的 MessageChannel
+else if (typeof MessageChannel !== 'undefined' && (
   isNative(MessageChannel) ||
   // PhantomJS
   MessageChannel.toString() === '[object MessageChannelConstructor]'
@@ -49,7 +53,9 @@ if (typeof setImmediate !== 'undefined' && isNative(setImmediate)) {
   macroTimerFunc = () => {
     port.postMessage(1)
   }
-} else {
+}
+// 都不支持的情况下，使用setTimeout
+else {
   /* istanbul ignore next */
   macroTimerFunc = () => {
     setTimeout(flushCallbacks, 0)
@@ -58,6 +64,8 @@ if (typeof setImmediate !== 'undefined' && isNative(setImmediate)) {
 
 // Determine microtask defer implementation.
 /* istanbul ignore next, $flow-disable-line */
+/* 对于微任务(micro task) */
+// 检测浏览器是否原生支持 Promise
 if (typeof Promise !== 'undefined' && isNative(Promise)) {
   const p = Promise.resolve()
   microTimerFunc = () => {
@@ -69,7 +77,9 @@ if (typeof Promise !== 'undefined' && isNative(Promise)) {
     // "force" the microtask queue to be flushed by adding an empty timer.
     if (isIOS) setTimeout(noop)
   }
-} else {
+}
+// 不支持的话直接指向 macro task 的实现。
+else {
   // fallback to macro
   microTimerFunc = macroTimerFunc
 }

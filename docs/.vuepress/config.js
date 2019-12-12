@@ -103,6 +103,7 @@ module.exports = {
         children: [
           ["instanceMethods/data",'数据相关的方法'],
           ["instanceMethods/event",'事件相关的方法'],
+          ["instanceMethods/lifecycle",'生命周期相关的方法'],
         ]
       },
     ]
