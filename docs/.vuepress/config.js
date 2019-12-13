@@ -113,6 +113,14 @@ module.exports = {
           ["globalAPI/",'全局API分析'],
         ]
       },
+      {
+        title: "过滤器篇",
+        collapsable: false,
+        children: [
+          ["filter/",'用法回顾'],
+          ["filter/filterPrinciple",'工作原理'],
+        ]
+      },
     ]
   }
 };

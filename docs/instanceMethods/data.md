@@ -397,7 +397,7 @@ vm.$set( target, propertyName/index, value )
 
 正是因为存在这个问题，所以`Vue`设计了`set`和`delete`这两个方法来解决这一问题，下面我们就先来看看`set`方法的内部实现原理。
 
-`set`方法的定义位于源码的`src/core.observer/index.js`中，如下：
+`set`方法的定义位于源码的`src/core/observer/index.js`中，如下：
 
 ```javascript
 export function set (target, key, val){
@@ -435,7 +435,7 @@ export function set (target, key, val){
 
 可以看到，方法内部的逻辑并不复杂，就是根据不同的情况作出不同的处理。
 
-首先判断在非生产环境下如果传入的`target`不存在，或者`target`是原始值，则抛出警告，如下：
+首先判断在非生产环境下如果传入的`target`是否为`undefined`、`null`或是原始类型，如果是，则抛出警告，如下：
 
 ```javascript
 if (process.env.NODE_ENV !== 'production' &&
@@ -495,7 +495,9 @@ defineReactive(ob.value, key, val)
 ob.dep.notify()
 ```
 
-以上，就是`set`方法的内部原理。
+以上，就是`set`方法的内部原理。其逻辑流程图如下：
+
+![](~@/instanceMethods/1.jpg)
 
 ## 3. vm.$delete
 
