@@ -106,6 +106,13 @@ module.exports = {
           ["instanceMethods/lifecycle",'生命周期相关的方法'],
         ]
       },
+      {
+        title: "全局API篇",
+        collapsable: false,
+        children: [
+          ["globalAPI/",'全局API分析'],
+        ]
+      },
     ]
   }
 };
