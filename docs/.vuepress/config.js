@@ -119,6 +119,7 @@ module.exports = {
         children: [
           ["filter/",'用法回顾'],
           ["filter/filterPrinciple",'工作原理'],
+          ["filter/parseFilters",'解析过滤器'],
         ]
       },
     ]

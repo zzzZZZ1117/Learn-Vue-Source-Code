@@ -39,6 +39,14 @@ export function parseFilters (exp: string): string {
     } else if (inRegex) {
       if (c === 0x2f && prev !== 0x5C) inRegex = false
     } else if (
+      // 如果在exp不在 ' " ` / 即字符串 或者正则中
+      // 那么就判断 当前字符是否是 |
+      //  如果当前 字符为 | 
+      // 且下一个（上一个）字符不是 | 
+      // 且 不在 { } 对象中
+      // 且 不在 [] 数组中
+      // 且不在  () 中
+      // 那么说明此时是过滤器的一个 分界点
       c === 0x7C && // pipe
       exp.charCodeAt(i + 1) !== 0x7C &&
       exp.charCodeAt(i - 1) !== 0x7C &&
