@@ -80,14 +80,18 @@ export default {
     })
   },
 
-  render () {
+  render() {
+    /* 获取默认插槽中的第一个组件节点 */
     const slot = this.$slots.default
     const vnode: VNode = getFirstComponentChild(slot)
+    /* 获取该组件节点的componentOptions */
     const componentOptions: ?VNodeComponentOptions = vnode && vnode.componentOptions
     if (componentOptions) {
       // check pattern
+      /* 获取该组件节点的名称，优先获取组件的name字段，如果name不存在则获取组件的tag */
       const name: ?string = getComponentName(componentOptions)
       const { include, exclude } = this
+      /* 如果name不在inlcude中或者存在于exlude中则表示不缓存，直接返回vnode */
       if (
         // not included
         (include && (!name || !matches(include, name))) ||
@@ -98,17 +102,21 @@ export default {
       }
 
       const { cache, keys } = this
+      /* 获取组件的key */
       const key: ?string = vnode.key == null
         // same constructor may get registered as different local components
         // so cid alone is not enough (#3269)
         ? componentOptions.Ctor.cid + (componentOptions.tag ? `::${componentOptions.tag}` : '')
         : vnode.key
+      /* 如果命中缓存，则直接从缓存中拿 vnode 的组件实例 */
       if (cache[key]) {
         vnode.componentInstance = cache[key].componentInstance
         // make current key freshest
         remove(keys, key)
         keys.push(key)
-      } else {
+      }
+      /* 如果没有命中缓存，则将其设置进缓存 */
+      else {
         cache[key] = vnode
         keys.push(key)
         // prune oldest entry
@@ -116,7 +124,7 @@ export default {
           pruneCacheEntry(cache, keys[0], keys, this._vnode)
         }
       }
-
+      /* 最后设置keepAlive标记位 */
       vnode.data.keepAlive = true
     }
     return vnode || (slot && slot[0])

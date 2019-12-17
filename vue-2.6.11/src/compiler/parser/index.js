@@ -594,7 +594,7 @@ function processOnce (el) {
   }
 }
 
-// handle content being passed to a component as slot,
+// handle content being passed to a component as slot,  处理作为插槽传递到组件的内容，
 // e.g. <template slot="xxx">, <div slot-scope="xxx">
 function processSlotContent (el) {
   let slotScope

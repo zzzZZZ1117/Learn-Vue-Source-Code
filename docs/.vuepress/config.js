@@ -122,6 +122,13 @@ module.exports = {
           ["filter/parseFilters",'解析过滤器'],
         ]
       },
+      {
+        title: "内置组件篇",
+        collapsable: false,
+        children: [
+          ["BuiltInComponents/keep-alive",'keep-alive'],
+        ]
+      },
     ]
   }
 };
