@@ -19,21 +19,24 @@ function updateDirectives (oldVnode: VNodeWithData, vnode: VNodeWithData) {
 }
 
 function _update (oldVnode, vnode) {
-  const isCreate = oldVnode === emptyNode
-  const isDestroy = vnode === emptyNode
-  const oldDirs = normalizeDirectives(oldVnode.data.directives, oldVnode.context)
-  const newDirs = normalizeDirectives(vnode.data.directives, vnode.context)
+  const isCreate = oldVnode === emptyNode  // 判断当前节点`vnode`对应的旧节点`oldVnode`是不是一个空节点，如果是的话，表明当前节点是一个新创建的节点
+  const isDestroy = vnode === emptyNode  // 判断当前节点`vnode`是不是一个空节点，如果是的话，表明当前节点对应的旧节点将要被销毁
+  const oldDirs = normalizeDirectives(oldVnode.data.directives, oldVnode.context)  // 旧的指令集合，即`oldVnode`中保存的指令
+  const newDirs = normalizeDirectives(vnode.data.directives, vnode.context)  // 新的指令集合，即`vnode`中保存的指令
 
-  const dirsWithInsert = []
-  const dirsWithPostpatch = []
+  const dirsWithInsert = []  // 保存需要触发`inserted`指令钩子函数的指令列表。
+  const dirsWithPostpatch = []  // 保存需要触发`componentUpdated`指令钩子函数的指令列表
 
   let key, oldDir, dir
   for (key in newDirs) {
     oldDir = oldDirs[key]
     dir = newDirs[key]
+    // 判断当前循环到的指令名`key`在旧的指令列表`oldDirs`中是否存在，如果不存在，那么说明这是一个新的指令
     if (!oldDir) {
       // new directive, bind
+      // 触发指令中的`bind`钩子函数
       callHook(dir, 'bind', vnode, oldVnode)
+      // 如果定义了inserted 时的钩子函数 那么将该指令添加到dirsWithInsert中
       if (dir.def && dir.def.inserted) {
         dirsWithInsert.push(dir)
       }

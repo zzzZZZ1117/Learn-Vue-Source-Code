@@ -123,12 +123,19 @@ module.exports = {
         ]
       },
       {
+        title: "指令篇",
+        collapsable: false,
+        children: [
+          ["directives/customDirectives",'自定义指令'],
+        ]
+      },
+      {
         title: "内置组件篇",
         collapsable: false,
         children: [
           ["BuiltInComponents/keep-alive",'keep-alive'],
         ]
-      },
+      }
     ]
   }
 };

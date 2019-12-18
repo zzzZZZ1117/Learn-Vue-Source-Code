@@ -527,6 +527,12 @@ export function parseFor (exp: string): ?ForParseResult {
   return res
 }
 
+/**
+ * 处理 AST 上的 v-if , v-else , v-else-if 三个属性
+ * <div v-if="testIf === '1'">if</div>
+ * <div v-else-if="testIf === '2'">v-else-if</div>
+ * <div v-else>else</div>
+ */
 function processIf (el) {
   const exp = getAndRemoveAttr(el, 'v-if')
   if (exp) {
