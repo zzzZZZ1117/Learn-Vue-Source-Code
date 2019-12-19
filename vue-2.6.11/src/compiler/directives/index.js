@@ -1,4 +1,4 @@
-/* @flow */
+/*  @flow */
 
 import on from './on'
 import bind from './bind'
