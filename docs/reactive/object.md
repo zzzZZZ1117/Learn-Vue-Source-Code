@@ -57,7 +57,7 @@ let car = {
 export class Observer {
   constructor (value) {
     this.value = value
-    // 给value新增一个__ob__属性，值为该value的Observr实例
+    // 给value新增一个__ob__属性，值为该value的Observer实例
     // 相当于为value打上标记，表示它已经被转化成响应式了，避免重复操作  
     def(value,'__ob__',this)    
     if (Array.isArray(value)) {
@@ -105,7 +105,7 @@ function defineReactive (obj,key,val) {
 
 在上面的代码中，我们定义了`observer`类，它用来将一个正常的`object`转换成可观测的`object`。
 
-并且给`value`新增一个`__ob__`属性，值为该`value`的`Observr`实例。这个操作相当于为`value`打上标记，表示它已经被转化成响应式了，避免重复操作
+并且给`value`新增一个`__ob__`属性，值为该`value`的`Observer`实例。这个操作相当于为`value`打上标记，表示它已经被转化成响应式了，避免重复操作
 
 然后判断数据的类型，只有`object`类型的数据才会调用`walk`将每一个属性转换成`getter/setter`的形式来侦测变化。
 最后，在`defineReactive`中当传入的属性值还是一个`object`时使用` new observer（val）`来递归子属性，这样我们就可以把`obj`中的所有属性（包括子属性）都转换成`getter/seter`的形式来侦测变化。
