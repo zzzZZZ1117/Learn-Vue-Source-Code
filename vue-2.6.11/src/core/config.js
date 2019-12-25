@@ -128,3 +128,4 @@ export default ({
    */
   _lifecycleHooks: LIFECYCLE_HOOKS
 }: Config)
+
